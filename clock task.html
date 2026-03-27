@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Clock App</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>My Clock </h2>
+
+<button onclick="toggleClock()">Switch Clock</button>
+
+<!-- Digital Clock -->
+<div id="digitalClock" class="clock">
+    <h1 id="time"></h1>
+</div>
+
+<!-- Analog Clock -->
+<div id="analogClock" class="clock hidden">
+    <div class="analog">
+        <div class="hand hour" id="hour"></div>
+        <div class="hand minute" id="minute"></div>
+        <div class="hand second" id="second"></div>
+    </div>
+</div>
+
+<style>
+    body {
+    font-family: Arial;
+    text-align: center;
+    margin-top: 50px;
+    background: #111;
+    color: white;
+}
+
+button {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.clock {
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Digital */
+#time {
+    font-size: 50px;
+}
+
+/* Analog */
+.analog {
+    width: 200px;
+    height: 200px;
+    border: 5px solid white;
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
+}
+
+.hand {
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    background: white;
+    top: 50%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+}
+
+.hour {
+    height: 4px;
+}
+
+.minute {
+    height: 3px;
+}
+
+.second {
+    background: red;
+}
+</style>
+
+<script>
+    let isDigital = true;
+
+function toggleClock() {
+    isDigital = !isDigital;
+
+    document.getElementById("digitalClock").classList.toggle("hidden");
+    document.getElementById("analogClock").classList.toggle("hidden");
+}
+
+// Digital Clock
+function updateDigital() {
+    let now = new Date();
+    let time = now.toLocaleTimeString();
+    document.getElementById("time").innerText = time;
+}
+
+// Analog Clock
+function updateAnalog() {
+    let now = new Date();
+
+    let sec = now.getSeconds();
+    let min = now.getMinutes();
+    let hr = now.getHours();
+
+    let secDeg = sec * 6;
+    let minDeg = min * 6;
+    let hrDeg = hr * 30 + min * 0.5;
+
+    document.getElementById("second").style.transform = `rotate(${secDeg}deg)`;
+    document.getElementById("minute").style.transform = `rotate(${minDeg}deg)`;
+    document.getElementById("hour").style.transform = `rotate(${hrDeg}deg)`;
+}
+
+// Run both
+setInterval(() => {
+    updateDigital();
+    updateAnalog();
+}, 1000);
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
