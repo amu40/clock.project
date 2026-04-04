@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amna Imtiaz — Digital Marketing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #111827;
+    --surface2: #1a2235;
+    --border: #1e2d45;
+    --teal: #0fbcb4;
+    --teal-dim: rgba(15,188,180,0.12);
+    --teal-glow: rgba(15,188,180,0.25);
+    --gold: #e8c97a;
+    --text: #e8edf5;
+    --muted: #6b7fa3;
+    --soft: #94a3bd;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* GRID BG */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(15,188,180,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15,188,180,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 5vw;
+    background: rgba(11,15,26,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-decoration: none;
+  }
+
+  .nav-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 0 var(--teal-glow); }
+    50% { box-shadow: 0 0 0 6px transparent; }
+  }
+
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.8rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--teal); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 5vw 5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 20%; left: -10%;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(15,188,180,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-glow2 {
+    position: absolute;
+    bottom: 10%; right: -5%;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(232,201,122,0.05) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--teal);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.3rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero h1 .last {
+    color: var(--teal);
+    font-style: italic;
+  }
+
+  .hero-role {
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+    color: var(--soft);
+    margin: 1.5rem 0 2.5rem;
+    max-width: 540px;
+    line-height: 1.75;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.9rem;
+    background: var(--teal-dim);
+    border: 1px solid rgba(15,188,180,0.2);
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--teal);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.8rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.22s;
+    border: none;
+  }
+
+  .btn-teal {
+    background: var(--teal);
+    color: var(--bg);
+  }
+
+  .btn-teal:hover {
+    background: #13d4cb;
+    box-shadow: 0 0 24px var(--teal-glow);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--soft);
+    border: 1px solid var(--border);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    background: var(--teal-dim);
+  }
+
+  /* ── INFO STRIP ── */
+  .info-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 5vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+  }
+
+  .info-item .info-label { color: var(--muted); font-weight: 500; }
+  .info-item .info-val { color: var(--text); font-weight: 400; }
+  .info-item .info-icon { color: var(--teal); font-size: 0.9rem; }
+
+  /* ── SECTION BASE ── */
+  section {
+    padding: 5.5rem 5vw;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sec-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.8rem;
+  }
+
+  .sec-label::after {
+    content: '';
+    display: block;
+    width: 40px; height: 1px;
+    background: var(--teal);
+    opacity: 0.4;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.6rem;
+  }
+
+  .sec-sub {
+    color: var(--muted);
+    font-size: 0.9rem;
+    max-width: 480px;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text {
+    font-size: 1rem;
+    color: var(--soft);
+    line-height: 1.85;
+  }
+
+  .about-text p + p { margin-top: 1.2rem; }
+
+  .about-text strong { color: var(--text); font-weight: 600; }
+
+  .about-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.8rem;
+  }
+
+  .about-card h3 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
+
+  .detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.82rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .detail-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .detail-key { color: var(--muted); font-weight: 500; }
+  .detail-val { color: var(--text); font-weight: 500; text-align: right; }
+
+  /* ── SKILLS ── */
+  .skills-section { background: var(--surface); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: default;
+  }
+
+  .skill-card:hover {
+    border-color: var(--teal);
+    background: var(--teal-dim);
+  }
+
+  .skill-card-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+
+  .skill-card-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+
+  .skill-card-level {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    background: var(--teal-dim);
+    color: var(--teal);
+    border: 1px solid rgba(15,188,180,0.2);
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2.2rem;
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--teal);
+    border-radius: 3px 0 0 3px;
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .exp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .exp-org {
+    font-size: 0.85rem;
+    color: var(--teal);
+    font-weight: 500;
+  }
+
+  .exp-duration {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .exp-responsibilities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .resp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.84rem;
+    color: var(--soft);
+    line-height: 1.5;
+  }
+
+  .resp-item::before {
+    content: '▸';
+    color: var(--teal);
+    font-size: 0.7rem;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 700px;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .edu-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .edu-item {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.4rem 1.6rem;
+    transition: border-color 0.2s;
+  }
+
+  .edu-item:hover { border-color: var(--teal); }
+
+  .edu-item::before {
+    content: '';
+    position: absolute;
+    left: -2.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 2px solid var(--bg);
+  }
+
+  .edu-degree {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .edu-institute {
+    font-size: 0.82rem;
+    color: var(--teal);
+    margin-bottom: 0.2rem;
+  }
+
+  .edu-year {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
+    max-width: 700px;
+  }
+
+  .cert-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.4rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+
+  .cert-card:hover { border-color: var(--gold); }
+
+  .cert-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
+
+  .cert-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .cert-issuer {
+    font-size: 0.78rem;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+    font-weight: 500;
+  }
+
+  .cert-date {
+    font-size: 0.73rem;
+    color: var(--muted);
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--soft);
+    padding: 1rem 1.2rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.88rem;
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    background: var(--teal-dim);
+  }
+
+  .contact-link .cl-icon {
+    font-size: 1.2rem;
+    width: 36px; height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface2);
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .contact-link .cl-label { color: var(--muted); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+  .contact-link .cl-val { font-weight: 500; font-size: 0.85rem; color: var(--text); }
+
+  .contact-note {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+  }
+
+  .contact-note h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .contact-note p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .avail-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--teal);
+    background: var(--teal-dim);
+    border: 1px solid rgba(15,188,180,0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+  }
+
+  .avail-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  footer span { color: var(--teal); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .exp-responsibilities { grid-template-columns: 1fr; }
+    .info-strip { gap: 1rem; }
+    footer { flex-direction: column; gap: 0.4rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-dot"></div>
+    <span class="nav-name">Amna Imtiaz</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-tag">Digital Marketing Portfolio</div>
+
+  <h1>
+    Amna<br>
+    <span class="last">Imtiaz</span>
+  </h1>
+
+  <p class="hero-role">
+    An aspiring <strong style="color:var(--text)">Digital Marketing Professional</strong> trained in Meta Ads, 
+    lead generation campaigns, and audience targeting — with a background in education and a passion for 
+    data-driven advertising.
+  </p>
+
+  <div class="hero-badges">
+    <div class="badge">📱 Meta Ads Manager</div>
+    <div class="badge">🎯 Lead Generation</div>
+    <div class="badge">📊 Campaign Optimization</div>
+    <div class="badge">🎨 Canva</div>
+    <div class="badge">☁️ Microsoft Azure</div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#experience" class="btn btn-teal">View Experience →</a>
+    <a href="#contact" class="btn btn-ghost">Contact Me</a>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<div class="info-strip">
+  <div class="info-item">
+    <span class="info-icon">📍</span>
+    <span class="info-label">Location:</span>
+    <span class="info-val">Ghari Shahu, Lahore</span>
+  </div>
+  <div class="info-item">
+    <span class="info-icon">📱</span>
+    <span class="info-label">Phone:</span>
+    <span class="info-val">0327-4406583</span>
+  </div>
+  <div class="info-item">
+    <span class="info-icon">✉️</span>
+    <span class="info-label">Email:</span>
+    <span class="info-val">ar823638@gmail.com</span>
+  </div>
+  <div class="info-item">
+    <span class="info-icon">🎓</span>
+    <span class="info-label">Degree:</span>
+    <span class="info-val">BS Islamic Education, University of Punjab</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-label">Who I Am</div>
+  <h2>About Me</h2>
+  <p class="sec-sub">A motivated beginner with the right foundation to grow fast in performance marketing.</p>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+    I am a performance-focused digital marketer specializing in Meta Ads and lead generation campaigns. I design and optimize data-driven advertising strategies aimed at maximizing ROI, improving conversion rates, and reducing acquisition costs.
+
+Trained under <strong>TEVTA</strong>, I have hands-on experience in campaign setup, audience targeting, A/B testing, and performance optimization. I approach marketing with a combination of analytical thinking and creative execution to deliver measurable results.
+
+Currently seeking an opportunity to apply my skills in a real-world environment and contribute to business growth through paid media.
+      </p>
+    </div>
+
+    <div class="about-card">
+      <h3>Personal Details</h3>
+      <div class="detail-row">
+        <div class="detail-item">
+          <span class="detail-key">Nationality</span>
+          <span class="detail-val">Pakistani</span>
+        </div>
+        <!-- <div class="detail-item">
+          <span class="detail-key">Date of Birth</span>
+          <span class="detail-val">13 July 2001</span> -->
+        </div>
+        <div class="detail-item">
+          <span class="detail-key">Father's Name</span>
+          <span class="detail-val">Muhammad Imtiaz Sarwar</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-key">City</span>
+          <span class="detail-val">Lahore, Pakistan</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-key">Status</span>
+          <span class="detail-val" style="color:var(--teal)">Open to Internship</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="sec-label">What I Know</div>
+  <h2>Skills &amp; Tools</h2>
+  <p class="sec-sub">Core competencies developed through TEVTA training and hands-on practice.</p>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-icon">📱</div>
+      <div class="skill-card-name">Meta Ads Manager</div>
+      <span class="skill-card-level">Trained</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">📣</div>
+      <div class="skill-card-name">Facebook & Instagram Advertising</div>
+      <span class="skill-card-level">Trained</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🎯</div>
+      <div class="skill-card-name">Lead Generation</div>
+      <span class="skill-card-level">Trained</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">👥</div>
+      <div class="skill-card-name">Audience Targeting</div>
+      <span class="skill-card-level">Trained</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">📈</div>
+      <div class="skill-card-name">Campaign Optimization</div>
+      <span class="skill-card-level">Trained</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">📲</div>
+      <div class="skill-card-name">Social Media Marketing</div>
+      <span class="skill-card-level">Beginner</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">✍️</div>
+      <div class="skill-card-name">Ad Copywriting</div>
+      <span class="skill-card-level">Beginner</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🗺️</div>
+      <div class="skill-card-name">Content Strategy</div>
+      <span class="skill-card-level">Beginner</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🎨</div>
+      <div class="skill-card-name">Canva (Ad Creatives)</div>
+      <span class="skill-card-level">Proficient</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">💻</div>
+      <div class="skill-card-name">Microsoft Office Suite</div>
+      <span class="skill-card-level">Proficient</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-label">Work History</div>
+  <h2>Experience</h2>
+  <p class="sec-sub">Practical training completed under TEVTA's official digital marketing program.</p>
+
+  <div class="exp-card">
+    <div class="exp-header">
+      <div>
+        <div class="exp-title">Digital Marketing Trainee — Meta Ads</div>
+        <div class="exp-org">TEVTA (Technical Education & Vocational Training Authority)</div>
+      </div>
+      <div class="exp-duration">3 Months Training</div>
+    </div>
+    <div class="exp-responsibilities">
+      <div class="resp-item">Created and managed Meta Ads campaigns from scratch</div>
+      <div class="resp-item">Set campaign objectives — Lead Generation, Traffic, Engagement</div>
+      <div class="resp-item">Defined target audiences based on demographics & interests</div>
+      <div class="resp-item">Designed ad creatives with clear, compelling CTAs</div>
+      <div class="resp-item">Managed ad budgets and campaign scheduling</div>
+      <div class="resp-item">Analyzed performance metrics: CTR, CPC, Reach, Leads</div>
+      <div class="resp-item">Optimized campaigns based on performance data</div>
+      <div class="resp-item">Learned audience segmentation and retargeting strategies</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background: var(--surface);">
+  <div class="sec-label">Academic Background</div>
+  <h2>Education</h2>
+  <p class="sec-sub">Academic credentials from recognized institutions in Lahore, Pakistan.</p>
+
+  <div class="edu-timeline">
+    <div class="edu-item">
+      <div class="edu-degree">BS Education (Islamic)</div>
+      <div class="edu-institute">University of the Punjab, Lahore</div>
+      <div class="edu-year">2020 – 2024</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-degree">Intermediate — ICS</div>
+      <div class="edu-institute">BISE Lahore</div>
+      <div class="edu-year">2018 – 2020</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-degree">Matriculation</div>
+      <div class="edu-institute">BISE Lahore</div>
+      <div class="edu-year">2016 – 2018</div>
+    </div>
+  </div>
+
+  <!-- Certifications -->
+  <div style="margin-top:3.5rem;">
+    <div class="sec-label">Certifications</div>
+    <div class="cert-grid" style="margin-top:1rem;">
+      <div class="cert-card">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-title">Digital Marketing — Meta (Facebook & Instagram)</div>
+          <div class="cert-issuer">TEVTA</div>
+          <div class="cert-date">3-Month Training Program</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">☁️</div>
+        <div>
+          <div class="cert-title">Microsoft Azure Fundamentals</div>
+          <div class="cert-issuer">Microsoft</div>
+          <div class="cert-date">Dec 2024 – Feb 2025</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">💻</div>
+        <div>
+          <div class="cert-title">Basic Computer Literacy</div>
+          <div class="cert-issuer">Punjab Computer College</div>
+          <div class="cert-date">2018</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="sec-label">Reach Out</div>
+  <h2>Get In Touch</h2>
+  <p class="sec-sub">Open to internship opportunities in digital marketing and performance advertising.</p>
+
+  <div class="contact-grid">
+    <div class="contact-links">
+      <a href="tel:+923274406583" class="contact-link">
+        <div class="cl-icon">📱</div>
+        <div>
+          <div class="cl-label">Phone / WhatsApp</div>
+          <div class="cl-val">0327-4406583</div>
+        </div>
+      </a>
+      <a href="mailto:ar823638@gmail.com" class="contact-link">
+        <div class="cl-icon">✉️</div>
+        <div>
+          <div class="cl-label">Email</div>
+          <div class="cl-val">ar823638@gmail.com</div>
+        </div>
+      </a>
+      <div class="contact-link">
+        <div class="cl-icon">📍</div>
+        <div>
+          <div class="cl-label">Address</div>
+          <div class="cl-val">Allama Iqbal Road, Ghari Shahu, Lahore</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-note">
+      <h3>Looking for an Internship</h3>
+      <p>
+        I am a motivated beginner eager to put my TEVTA training into real-world practice. 
+        I'm looking for a digital marketing internship where I can contribute, learn, 
+        and grow — especially in Meta Ads and performance marketing.
+      </p>
+      <p style="font-size:0.78rem; color:var(--muted);">
+        📎 References will be furnished upon request.
+      </p>
+      <div class="avail-badge">
+        <div class="avail-dot"></div>
+        Currently Available for Internship
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2025 <span>Amna Imtiaz</span> — Digital Marketing Portfolio</div>
+  <div>Lahore, Pakistan</div>
+</footer>
+
+</body>
+</html>
